@@ -1,4 +1,4 @@
-#!python3
+#!python2.7
 
 import cvxpy
 import functools
@@ -32,7 +32,7 @@ def Nash_budget(total, subjects, preferences):
     problem.solve()
 
     # print budget partition
-    print("\ntotal=" + str(total) + " subject=" + str(subjects) + ' preferences='+ str(preferences))
+    print("\ntotal=" + str(total) + "\nsubjects=" + str(subjects) + '\npreferences='+ str(preferences))
 
     budget_list = []
     budget = "BUDGET: " + " {}={} , " * num_of_subjects
@@ -59,4 +59,9 @@ if __name__ == '__main__':
     Nash_budget(500, ['a', 'b', 'c', 'd'], [['b', 'd'], ['a', 'c'], ['a', 'd'], ['b', 'c'], ['a']])
 
     Nash_budget(7500, ['Education', 'Sport', 'Road', 'Entertainment', 'Tech', 'Renovation'],
-                [['Education', 'Tech'], ['Tech', 'Education'], ['Sport', 'Road'], ['Entertainment', 'Road'], ['Education', 'Sport']])
+                preferences = [['Education', 'Tech'], ['Tech', 'Education'], ['Sport', 'Road'], ['Entertainment', 'Road'],
+                               ['Education', 'Sport']])
+
+    Nash_budget(1000000, ['Education', 'Sport', 'Road', 'Entertainment', 'Tech', 'Renovation'],
+                preferences=[['Education', 'Tech'], ['Tech', 'Education'], ['Sport', 'Road'], ['Entertainment', 'Road'],
+                 ['Education', 'Sport']])
