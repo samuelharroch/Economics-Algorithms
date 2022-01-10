@@ -7,8 +7,8 @@ import functools
 
 import logging , sys
 logger = logging.getLogger(__name__)
-# logger.addHandler(logging.StreamHandler(sys.stdout))
-# logger.setLevel(logging.INFO)
+logger.addHandler(logging.StreamHandler(sys.stdout))
+logger.setLevel(logging.INFO)
 
 
 def equal_dicts(dict1 , dict2 ):
@@ -74,6 +74,7 @@ def Nash_budget(total, subjects, preferences):
 
     num_of_subjects = len(subjects)
     num_of_citizens = len(preferences)
+
     allocations = cvxpy.Variable(num_of_subjects)
 
     allocations_dict = dict(zip(subjects, allocations))
@@ -125,12 +126,12 @@ def Nash_budget(total, subjects, preferences):
 if __name__ == '__main__':
 
 
-    # Nash_budget(7500, ['Education', 'Sport', 'Road', 'Entertainment', 'Tech', 'Renovation'],
-    #             preferences = [['Education', 'Tech'], ['Tech', 'Education'], ['Sport', 'Road'], ['Entertainment', 'Road'],
-    #                            ['Education', 'Sport']])
-    #
-    # Nash_budget(1000000, ['Education', 'Sport', 'Road', 'Entertainment', 'Tech', 'Renovation'],
-    #             preferences=[['Education', 'Tech'], ['Tech', 'Education'], ['Sport', 'Road'], ['Entertainment', 'Road'],
-    #              ['Education', 'Sport']])
+    Nash_budget(7500, ['Education', 'Sport', 'Road', 'Entertainment', 'Tech', 'Renovation'],
+                preferences = [['Education', 'Tech'], ['Tech', 'Education'], ['Sport', 'Road'], ['Entertainment', 'Road'],
+                               ['Education', 'Sport']])
 
-    doctest.testmod(name='Nash_budget', verbose=True)
+    Nash_budget(1000000, ['Education', 'Sport', 'Road', 'Entertainment', 'Tech', 'Renovation'],
+                preferences=[['Education', 'Tech'], ['Tech', 'Education'], ['Sport', 'Road'], ['Entertainment', 'Road'],
+                 ['Education', 'Sport']])
+
+    # doctest.testmod(name='Nash_budget', verbose=True)
